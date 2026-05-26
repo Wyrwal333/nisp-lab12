@@ -1,4 +1,3 @@
-// Klasa reprezentująca gońca
 class Bishop {
     constructor() {
         this.type = "BISHOP";
@@ -12,4 +11,3 @@ class Bishop {
         return dx === dy;
     }
 }
-
