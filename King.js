@@ -16,17 +16,22 @@ class King {
         this.type = "KING";
     }
 
-    validateMove(move) {
-    console.log("DEBUG KRÓLA:", move); // Zobacz w konsoli przeglądarki, co tu się wyświetla!
-    
-    if (!move || !move.from || !move.to) return false;
-    
-    const deltaX = Math.abs(move.to.x - move.from.x);
-    const deltaY = Math.abs(move.to.y - move.from.y);
-    
-    if (deltaX === 0 && deltaY === 0) return false;
-    
-    return deltaX <= 1 && deltaY <= 1;
-    
+validateMove(move) {
+        // Zabezpieczenie przed pustym obiektem
+        if (!move) {
+            return false;
+        }
+
+        // Pobieramy współrzędne z Twoich pól: sourceX, sourceY, destinationX, destinationY
+        const deltaX = Math.abs(move.destinationX - move.sourceX);
+        const deltaY = Math.abs(move.destinationY - move.sourceY);
+
+        // Król nie może ruszyć się na to samo pole
+        if (deltaX === 0 && deltaY === 0) {
+            return false;
+        }
+
+        // Król porusza się o maksymalnie jedno pole w każdym kierunku
+        return deltaX <= 1 && deltaY <= 1;
     }
 }
