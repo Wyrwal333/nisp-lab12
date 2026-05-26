@@ -1,16 +1,19 @@
 // Klasa reprezentująca wieżę
 class Rook {
+
     constructor() {
         this.type = "ROOK";
     }
 
     validateMove(move) {
 
-        const dx = Math.abs(move.to.x - move.from.x);
-        const dy = Math.abs(move.to.y - move.from.y);
+        // ruch poziomy
+        if (move.sourceY === move.destinationY) {
+            return true;
+        }
 
-        // ruch pionowy lub poziomy
-        if ((dx > 0 && dy === 0) || (dy > 0 && dx === 0)) {
+        // ruch pionowy
+        if (move.sourceX === move.destinationX) {
             return true;
         }
 
@@ -18,4 +21,4 @@ class Rook {
     }
 }
 
-export default Rook;
+module.exports = Rook;
